@@ -1,0 +1,20 @@
+name: Test tee time bot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Saekja kodann
+        uses: actions/checkout@v4
+
+      - name: Setja upp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Keyra botann
+        run: python tee_time_bot.py
