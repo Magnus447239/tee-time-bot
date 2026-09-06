@@ -22,14 +22,11 @@ jobs:
       - name: Keyra botann
         run: python tee_time_bot.py
 
-      - name: Testa Discord
+            - name: Testa Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: |
-          curl -H "Content-Type: application/json" \
-            -d '{"content":"🏌️ Tee Time Bot virkar!"}' \
-            "$DISCORD_WEBHOOK_URL"
-
+        run: curl -H "Content-Type: application/json" -d '{"content":"🏌️ Tee Time Bot virkar!"}' "$DISCORD_WEBHOOK_URL"
+        
       - name: Vista sidustu rastima
         run: |
           git config user.name "Tee Time Bot"
@@ -37,4 +34,3 @@ jobs:
           git add sidustu_timar.txt
           git diff --cached --quiet || git commit -m "Update tee time state"
           git push
-          
